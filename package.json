@@ -1,6 +1,6 @@
 {
   "name": "seneca-launcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Launch seneca plugins with additional transport support",
   "main": "index.js",
   "bin": {
