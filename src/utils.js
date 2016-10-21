@@ -13,7 +13,7 @@ module.exports = {
     return Promise.each(Object.keys(plugins), name => {
       const plugin = plugins[name].index || plugins[name]
       const pluginConfig = config[name]
-      return seneca.useAsync(plugin, pluginConfig).then(() => {
+      return seneca.useAsync(plugin, pluginConfig, name).then(() => {
         loaded.push(name)
       })
     }).then(() => loaded)

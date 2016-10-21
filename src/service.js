@@ -5,6 +5,7 @@
  */
 
 if (module.parent) { throw new Error('Im not a module, please launch me directly. Thank you') }
+require('babel-core/register')
 
 const config = require('config')
 const ld = require('lodash')
