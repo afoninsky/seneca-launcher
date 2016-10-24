@@ -40,6 +40,7 @@ Promise.resolve()
 
   if (config.transport) { // load http/https transport
     seneca.listen(config.transport)
+    seneca.logger.info(`Listen remote connections: ${JSON.stringify(config.transport)}`)
   }
 
   if (config.health) { // run healthcheck server
