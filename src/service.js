@@ -44,8 +44,9 @@ Promise.resolve()
 
   if (config.health) { // run healthcheck server
     seneca.logger.info(`Health server started on port ${config.health.port}`)
-    const info = Object.assign(ld.pick(require('../package'), ['name', 'version']), {
-      NODE_ENV: process.env.NODE_ENV
+    const info = Object.assign(ld.pick(require(`${process.env.PWD}/package`), ['name', 'version']), {
+      NODE_ENV: process.env.NODE_ENV,
+      loaded
     })
     require('./health')(config.health, info)
   }
