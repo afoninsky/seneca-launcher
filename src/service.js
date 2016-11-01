@@ -15,21 +15,20 @@ if (config.opbeat) { // init opbeat module, will catch error only on env = 'prod
 }
 
 const { loadPlugins } = require('./utils')
-const connections = require('./connections')
+// const connections = require('./connections')
 const seneca = require('seneca-extended')({
   logLevel: 'info'
 })
 
 const pluginsDir = `${process.env.PWD}/${process.argv[2] || 'src'}`
 
-
 Promise.resolve()
-.then(() => { // init mongodb connection
-  if (!config.mongodb) { return }
-  return connections.mongodb(config.mongodb, seneca.logger).then(database => {
-    seneca.decorate('mongodb', database)
-  })
-})
+// .then(() => { // init mongodb connection
+//   if (!config.mongodb) { return }
+//   return connections.mongodb(config.mongodb, seneca.logger).then(database => {
+//     seneca.decorate('mongodb', database)
+//   })
+// })
 .then(() => { // load plugins
   return loadPlugins(seneca, pluginsDir, config)
 }).then(loaded => { // launch service
