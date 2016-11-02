@@ -10,10 +10,10 @@ module.exports = {
   loadPlugins(seneca, path, config = {}) {
     const loaded = []
     const plugins = requireDir(path, {recurse: true})
-    return Promise.each(Object.keys(plugins), name => {
-      const plugin = plugins[name].index || plugins[name]
-      const pluginConfig = config[name]
-      return seneca.useAsync(plugin, pluginConfig, name).then(() => {
+    return Promise.each(Object.keys(plugins), fileName => {
+      const plugin = plugins[fileName].index || plugins[fileName]
+      const name = plugin.name || fileName
+      return seneca.useAsync(plugin, config[name], name).then(() => {
         loaded.push(name)
       })
     }).then(() => loaded)
